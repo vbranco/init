@@ -1,12 +1,4 @@
 #!/bin/sh
 
-apt update >> /var/log/update_script.log
-apt upgrade >> /var/log/update_script.log
-echo >> /var/log/update_script.log
-
-if [ ! -f /var/spool/cron/crontabs/root ]
-then
-	echo '0 4 * * 1 /home/vitor/02' >> /home/vitor/tmp
-	crontab /home/vitor/tmp
-	rm /home/vitor/tmp
-fi
+apt-get update >> /var/log/update_script.log 2>&1
+apt-get -y upgrade >> /var/log/update_script.log 2>&1

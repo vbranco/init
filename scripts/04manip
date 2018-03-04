@@ -1,0 +1,11 @@
+ouvrir crontab avec crontab -e
+rajouter la ligne :
+0 0 * * * /<PATH>/04
+
+OU
+
+faire :
+echo '0 0 * * * /<PATH>/04' > /<PATH>/tmp
+crontab /<PATH>/tmp
+rm /<PATH>/tmp
+

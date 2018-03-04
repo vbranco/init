@@ -1,2 +1,15 @@
-#!/bin/sh
+#!/bin/bash
 
+if [ ! -f /home/verif ]
+then
+	md5sum /etc/crontab > /home/verif
+fi
+
+t1="`cat /home/verif`"
+t2="`md5sum /etc/crontab`"
+
+if [[ $t1 != $t2 ]]
+then
+	echo "Crontab has been changed" | mail -s "Crontab changed" root
+	md5sum /etc/crontab > /home/verif
+fi

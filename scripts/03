@@ -1,2 +1,3 @@
 #!/bin/sh
 
+du $1 | sort -n
